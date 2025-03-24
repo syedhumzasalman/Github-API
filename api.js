@@ -44,19 +44,24 @@ function Loading() {
                     icon: "error",
                     text: "Please enter a Valid UserName.",
                     confirmButtonText: "OK",
-                });
+                }).then((result)=>{
+                  if(result.isConfirmed){
+                    window.location.href = "index.html";
+                  }
+                })
                 return;
             }
             //   console.log(data);
             profiledisplay.innerHTML = `<div class="book">
             <button></button>
             <div class="mycard">
-                <img class="profile-img" src="${data.avatar_url}" alt="Profile Picture">
-                <h2 class="username">${data.name || "No Name Provided"}</h2>
-                <p class="description">${data.bio || "No Bio Available"}</p>
-                <p class="joined-date">Joined: ${new Date(data.created_at).toDateString()}</p>
-                <a href="${data.html_url}" class="visit-profile">Visit Profile</a>
-              </div>
+            <img class="profile-img" src="${data.avatar_url}" alt="Profile Picture">
+            <h2 class="username">${data.name || "No Name Provided"}</h2>
+            <p class="description">${data.bio || "No Bio Available"}</p>
+            <p class="joined-date">Joined: ${new Date(data.created_at).toDateString()}</p>
+            <a href="${data.html_url}" class="visit-profile">Visit Profile</a>
+            </div>
+            <button onClick="goBack()" class="mybtnn"> ⇦ Go Back</button>
             <div class="cover">
             <img class="myimg" src="https://ih1.redbubble.net/image.4510478347.3043/st,small,507x507-pad,600x600,f8f8f8.u3.jpg" alt="">
             </div>
@@ -67,4 +72,9 @@ function Loading() {
 
 
   
+}
+
+
+function goBack() {
+   window.location.href = "index.html"
 }
